@@ -1,8 +1,9 @@
 {
-  "name": "learn-rollup",
+  "name": "mdc-print",
+  "main": "build/js/main.min.js",
+  "module": "build/js/index.mjs",
   "version": "0.0.0",
   "description": "This is an example project to accompany a tutorial on using Rollup.",
-  "main": "build/js/main.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,6 +17,12 @@
     "url": "https://github.com/jlengstorf/learn-rollup/issues"
   },
   "homepage": "https://github.com/jlengstorf/learn-rollup#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-es2015": "^6.24.1",
+    "rollup": "^2.58.3",
+    "rollup-plugin-babel": "^4.4.0"
+  },
   "dependencies": {}
 }
