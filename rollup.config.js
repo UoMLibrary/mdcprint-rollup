@@ -16,32 +16,32 @@ export default {
   inlineDynamicImports: true,
   input: "src/scripts/main.js",
   output: [{ file: pkg.main, format: "esm" }],
-  plugins: [
-    // terser({ comments: false }),
-    terser(),
-    resolve(),
-    commonjs(),
-    babel({
-      extensions: [".js", ".mjs", ".html", ".svelte"],
-      runtimeHelpers: true,
-      exclude: ["node_modules/@babel/**"],
-      presets: [
-        [
-          "@babel/preset-env",
-          {
-            targets: "> 0.25%, not dead",
-          },
-        ],
-      ],
-      plugins: [
-        "@babel/plugin-syntax-dynamic-import",
-        [
-          "@babel/plugin-transform-runtime",
-          {
-            useESModules: true,
-          },
-        ],
-      ],
-    }),
-  ],
+  plugins: [resolve(), commonjs()], // FAST DEV VERSION WITH NO TRANSPILE
+  //   plugins: [
+  //     terser(),
+  //     resolve(),
+  //     commonjs(),
+  //     babel({
+  //       extensions: [".js", ".mjs", ".html", ".svelte"],
+  //       runtimeHelpers: true,
+  //       exclude: ["node_modules/@babel/**"],
+  //       presets: [
+  //         [
+  //           "@babel/preset-env",
+  //           {
+  //             targets: "> 0.25%, not dead",
+  //           },
+  //         ],
+  //       ],
+  //       plugins: [
+  //         "@babel/plugin-syntax-dynamic-import",
+  //         [
+  //           "@babel/plugin-transform-runtime",
+  //           {
+  //             useESModules: true,
+  //           },
+  //         ],
+  //       ],
+  //     }),
+  //   ],
 };
