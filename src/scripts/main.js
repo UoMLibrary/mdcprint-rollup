@@ -13,10 +13,12 @@
 // printTarget.innerText += `addArray([1, 2, 3, 4]) => ${result2}`;
 
 import jsPDF from "jspdf";
+import { get, set, clear } from "idb-keyval";
 
 export const printButtonClicked = () => {
   console.log("Clicked");
   var doc = new jsPDF();
+  set("image_url", "image_data");
 
   doc.setFontSize(40);
   doc.text("Octonyan loves jsPDF", 35, 25);
