@@ -4,6 +4,12 @@
 
 There is an index.html file in the build directory that can be run with live server. This contains an example of the Javascript print component. The Javascript file is approx 740kb but does compress with gzip to about 225kb.
 
+NOTE: The javascript file will need building before the example will work
+
+```bash
+./node_modules/.bin/rollup -c -w
+```
+
 The example contains references to a few missing files to demonstrate how missing files are rendered into the pdf.
 
 Changes made to the source code in main.js can be automatically rebuilt to the build folder using
