@@ -1,8 +1,28 @@
 # Creating a Javascript only version of the pdf print functionality
 
-[Using Rollup](http://rollupjs.org/).
+## Quickstart
+
+There is an index.html file in the build directory that can be run with live server. This contains an example of the Javascript print component. The Javascript file is approx 740kb but does compress with gzip to about 225kb.
+
+The example contains references to a few missing files to demonstrate how missing files are rendered into the pdf.
+
+Changes made to the source code in main.js can be automatically rebuilt to the build folder using
+
+```bash
+./node_modules/.bin/rollup -c -w
+```
+
+The configuraion for the build is in rollup.config.js
+
+There are callback events for each image loading, each page being built and the overall completion of the pdf that can be used for providing feedback to the user.
+
+The pdf is built on the client, all images are downloaded to the client.
+
+The completed_callback returns any image urls that returned errors.
 
 ## Rolling it up
+
+[Using Rollup](http://rollupjs.org/).
 
 https://medium.com/stackanatomy/the-ultimate-guide-to-getting-started-with-the-rollup-js-javascript-bundler-2ebec9398656
 
