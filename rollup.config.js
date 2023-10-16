@@ -16,7 +16,7 @@ export default {
   inlineDynamicImports: true,
   input: "src/scripts/main.js",
   output: [{ file: pkg.main, format: "esm" }],
-  //   plugins: [resolve(), commonjs()], // FAST DEV VERSION WITH NO TRANSPILE
+  // plugins: [resolve(), commonjs()], // FAST DEV VERSION WITH NO TRANSPILE
   plugins: [
     terser(),
     resolve(),

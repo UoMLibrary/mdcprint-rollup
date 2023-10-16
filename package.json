@@ -1,6 +1,6 @@
 {
   "name": "mdc-print",
-  "main": "build/js/main.min.js",
+  "main": "build/js/mdc-print.min.js",
   "module": "build/js/index.mjs",
   "version": "0.0.0",
   "description": "This is an example project to accompany a tutorial on using Rollup.",
@@ -31,6 +31,5 @@
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^7.0.2"
-  },
-  "dependencies": {}
+  }
 }

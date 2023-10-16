@@ -4,6 +4,7 @@ import { get, set, clear } from "idb-keyval";
 
 const MAX_COLUMNS = 4;
 
+let loading_errors = [];
 let progressCallback;
 let completedCallback;
 let progress = 0;
@@ -105,6 +106,13 @@ function preloadImage(image_url) {
       .then((image_data) => {
         set(image_url, image_data);
         resolve();
+      })
+      .catch((err) => {
+        // console.log(err);
+        let missing_img_data = "";
+        loading_errors.push(image_url);
+        set(image_url, missing_img_data);
+        resolve();
       });
   });
 }
@@ -155,7 +163,7 @@ async function buildPdf(pdf_data) {
     pdfBuildCallback("buildpage", _progress);
   }
   pdf.save(pdf_data.filename);
-  if (completedCallback) completedCallback();
+  if (completedCallback) completedCallback(loading_errors);
 }
 
 function buildPage(pdf, _page) {
@@ -238,15 +246,24 @@ function buildPage(pdf, _page) {
           image_y_offset = (box_height - image_height) / 2;
         }
 
-        // draw the image (from indexeddb store) into the border area
-        pdf.addImage(
-          images[index],
-          "JPEG",
-          box_x + image_x_offset,
-          box_y + image_y_offset,
-          image_width,
-          image_height
-        );
+        if (images[index] === "") {
+          pdf.text(
+            `Image is missing`,
+            box_x + image_x_offset + box_width * 0.5,
+            box_y + box_height * 0.5,
+            { align: "center" }
+          );
+        } else {
+          // draw the image (from indexeddb store) into the border area
+          pdf.addImage(
+            images[index],
+            "JPEG",
+            box_x + image_x_offset,
+            box_y + image_y_offset,
+            image_width,
+            image_height
+          );
+        }
       });
       resolve();
     });
@@ -280,4 +297,11 @@ function buildPageArray(pdf_data) {
     }
   });
   return pages;
+}
+
+function drawBox(pdf, x1, y1, width, height) {
+  pdf.line(x1, y1, x1 + width, y1);
+  pdf.line(x1 + width, y1, x1 + width, y1 + height);
+  pdf.line(x1 + width, y1 + height, x1, y1 + height);
+  pdf.line(x1, y1 + height, x1, y1);
 }

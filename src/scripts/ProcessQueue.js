@@ -35,6 +35,7 @@ export default class ProcessQueue {
       this.activeJobCount++;
 
       await promise_job();
+
       this.completedCount++;
       this.activeJobCount--;
 
@@ -48,7 +49,11 @@ export default class ProcessQueue {
 
       // Are all the jobs complete
       //console.log(this.totalCount, this.completedCount);
-      if (this.totalCount && this.completeCallback && this.totalCount === this.completedCount) {
+      if (
+        this.totalCount &&
+        this.completeCallback &&
+        this.totalCount === this.completedCount
+      ) {
         this.activeJobCount = 0;
         this.completedCount = 0;
         this.completeCallback();

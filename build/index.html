@@ -1,65 +1,362 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width,minimum-scale=1,initial-scale=1"
-    />
-    <title>MDC Print rollup</title>
-  </head>
-  <body>
-    <button type="button" id="PrintButton">The MDC print button</button>
 
-    <!-- <script type="module"> -->
-    <script type="module">
-      let pdf_data = {
-        filename: "output.pdf",
-        cols: 4,
-        header_text: "The header\nText",
-        footer_text: "The footer\nText",
-        items: [
-          {
-            image_url:
-              "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00001.jp2/full/,150/0/default.jpg",
-            image_text: "Line 1\nLine 2\nLine 3",
-            width: 6000,
-            height: 4500,
-          },
-          {
-            image_url:
-              "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00002.jp2/full/,150/0/default.jpg",
-            image_text: "Line 1\nLine 2\nLine 3",
-            width: 6000,
-            height: 4500,
-          },
-          {
-            image_url:
-              "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00003.jp2/full/,150/0/default.jpg",
-            image_text: "Line 1\nLine 2\nLine 3",
-            width: 4500,
-            height: 5000,
-          },
-        ],
-      };
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+  <title>MDC Print rollup</title>
+</head>
 
-      // import the pdf generator
-      import { printpage } from "./js/main.min.js";
+<body>
+  <button type="button" id="PrintButton">The MDC print button</button>
 
-      // declare some callbacks (could be done inline)
-      function progressCallback(label, progress) {
-        console.log(label, progress);
-      }
-      function completedCallback() {
-        console.log("pdf complete");
-      }
+  <script type="module">
+    let pdf_data = {
+      filename: "columns_4.pdf",
+      cols: 2,
+      header_text: "The header\nText",
+      footer_text: "The footer\nText",
+      items: [
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00001.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 160,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/missing.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 6000,
+          height: 4500,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00002.jp2/full/,600/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00003.jp2/full/,800/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00001.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 160,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00001.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 6000,
+          height: 4500,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00002.jp2/full/,600/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00003.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00003.jp2/full/,800/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00001.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 160,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00001.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 6000,
+          height: 4500,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00002.jp2/full/,600/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00003.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00003.jp2/full/,800/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00001.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 160,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00001.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 6000,
+          height: 4500,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00002.jp2/full/,600/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00003.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00003.jp2/full/,800/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00001.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 160,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00001.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 6000,
+          height: 4500,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00002.jp2/full/,600/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00003.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00003.jp2/full/,800/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00001.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 160,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00001.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 6000,
+          height: 4500,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00002.jp2/full/,600/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00003.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00003.jp2/full/,800/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00001.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 160,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00001.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 6000,
+          height: 4500,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00002.jp2/full/,600/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00003.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00003.jp2/full/,800/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00001.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 160,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00001.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 6000,
+          height: 4500,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00002.jp2/full/,600/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00003.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00003.jp2/full/,800/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00001.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 160,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00001.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 6000,
+          height: 4500,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00002.jp2/full/,600/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00003.jp2/full/,240/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
+        {
+          image_url:
+            "https://image.digitalcollections.manchester.ac.uk/iiif/PR-INCU-18313-000-00003.jp2/full/,800/0/default.jpg",
+          image_text: "Line 1\nLine 2\nLine 3",
+          width: 137,
+          height: 240,
+        },
 
-      // print button event
-      document
-        .querySelector("#PrintButton")
-        .addEventListener("click", () =>
-          printpage(pdf_data, progressCallback, completedCallback)
-        );
-    </script>
-  </body>
+      ],
+    };
+
+    // import the pdf generator
+    import { printpage } from "./js/mdc-print.min.js";
+
+    // declare some callbacks (could be done inline)
+    function progressCallback(label, progress) {
+      console.log(label, progress);
+    }
+
+    function completedCallback(missing_images) {
+      console.log("pdf build complete");
+      if (missing_images.length > 0)
+        console.log(missing_images)
+    }
+
+    // print button event
+    document
+      .querySelector("#PrintButton")
+      .addEventListener("click", () =>
+        printpage(pdf_data, progressCallback, completedCallback)
+      );
+  </script>
+</body>
+
 </html>
